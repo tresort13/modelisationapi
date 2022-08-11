@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'estimation_backend.wsgi.application'
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'modelisation',
-        'USER' : 'postgres',
-        'PASSWORD' : 'darkband12345',
-        'HOST' : 'localhost'
+        'NAME': 'd4u5eplph7be05',
+        'USER' : 'xqtlvexyxexzjw',
+        'PASSWORD' : '45a5245a750694a94dae91a2adccb8f374706c9de4f1c8d150dbaf56b483248a',
+        'HOST' : 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com'
     }
 }
 
