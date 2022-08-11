@@ -1,4 +1,5 @@
 from posixpath import split
+from django.http import HttpResponse
 from django.shortcuts import render
 import openpyxl
 from estimationapi.serializers import PopulationActiveOffreEmploiSecteurSerializer
@@ -53,7 +54,9 @@ class RegisterAPI(generics.GenericAPIView):
         "user": UserSerializer(user, context=self.get_serializer_context()).data,
         "token": AuthToken.objects.create(user)[1]
         })
-        
+
+def welcom(request):
+    return HttpResponse('WELCOM TO MODELISATION  API RESOURCES')        
 
 
 @api_view(['POST'])   
