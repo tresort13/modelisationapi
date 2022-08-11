@@ -78,7 +78,7 @@ TEMPLATES = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://modelisation.herokuapp.com"
+    "https://modelisationfiscale.herokuapp.com"
 ]
 
 WSGI_APPLICATION = 'estimation_backend.wsgi.application'
