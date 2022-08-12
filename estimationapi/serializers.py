@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import CalculeDemandeInterieure, CalculeProductionDomestique, DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite
+from .models import CalculeDemandeInterieure, CalculeProductionDomestique, DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, DonneeProduction, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite
 from django.contrib.auth.models import User
 
 
@@ -111,6 +111,12 @@ class CalculeProductionDomestiqueSerializer(serializers.ModelSerializer):
     class Meta:
         model = CalculeProductionDomestique
         fields = ['id', 'fichier']
+        
+        
+class DonneeProductionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DonneeProduction
+        fields =  ['id', 'fichier']
         
         
         

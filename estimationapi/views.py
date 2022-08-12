@@ -24,7 +24,7 @@ from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework import generics, permissions
-from .serializers import  UserSerializer, RegisterSerializer
+from .serializers import  DonneeProductionSerializer, UserSerializer, RegisterSerializer
 from django.contrib.auth import login
 from knox.models import AuthToken
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -214,6 +214,23 @@ def donneeImportation(request):
     for i in range(3,row + 1):
             donnes.append({"nom_province":sheet.cell(i,1).value,"nature_importations":sheet.cell(i,2).value,"milieu_urbaine_agriculture":sheet.cell(i,3).value,"milieu_urbaine_mines":sheet.cell(i,4).value,"milieu_urbaine_industrie":sheet.cell(i,5).value,"milieu_urbaine_service":sheet.cell(i,6).value,"milieu_rurale_agriculture":sheet.cell(i,7).value,"milieu_rurale_mines":sheet.cell(i,8).value,"milieu_rurale_industrie":sheet.cell(i,9).value,"milieu_rurale_service":sheet.cell(i,10).value});          
     return Response(donnes)
+
+
+@api_view(['POST'])   
+def donneeProduction(request): 
+    fichier = request.data['fichier']
+    serializer = DonneeProductionSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(3,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_production":sheet.cell(i,2).value,"milieu_urbaine_agriculture":sheet.cell(i,3).value,"milieu_urbaine_mines":sheet.cell(i,4).value,"milieu_urbaine_industrie":sheet.cell(i,5).value,"milieu_urbaine_service":sheet.cell(i,6).value,"milieu_rurale_agriculture":sheet.cell(i,7).value,"milieu_rurale_mines":sheet.cell(i,8).value,"milieu_rurale_industrie":sheet.cell(i,9).value,"milieu_rurale_service":sheet.cell(i,10).value});          
+    return Response(donnes)
+
+
 
 
 @api_view(['GET'])   
