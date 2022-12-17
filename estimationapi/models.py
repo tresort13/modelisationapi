@@ -108,8 +108,6 @@ class ImpotDGI(models.Model):
     
 class ImpoExpoDGDA(models.Model):
     fichier = models.FileField(upload_to='files')
-    taux_exportation= models.CharField(max_length=3)
-    taux_importation= models.CharField(max_length=3)
     date_heure_envoie =models.DateTimeField(auto_now_add=True)
     date_envoie = models.DateField(auto_now_add=True)
     

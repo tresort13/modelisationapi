@@ -379,9 +379,7 @@ def impotDGI(request):
 @api_view(['POST'])   
 def impoExpoDGDA(request): 
     fichier = request.data['fichier']
-    tauxExportation = request.data['taux_exportation']
-    tauxImportation = request.data['taux_importation']
-    serializer = ImpoExpoDGDASerializer(data={'fichier':fichier,'taux_exportation':tauxExportation,'tauxImportation':tauxImportation})
+    serializer = ImpoExpoDGDASerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)

@@ -126,7 +126,7 @@ class ImpotDGISerializer(serializers.ModelSerializer):
 class ImpoExpoDGDASerializer(serializers.ModelSerializer):
     class Meta:
         model = ImpoExpoDGDA
-        fields =  ['id', 'fichier','taux_exportation','taux_importation']
+        fields =  ['id', 'fichier']
         
         
         
