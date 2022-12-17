@@ -365,8 +365,7 @@ def donneeInvestissementPriveAuto(request):
 @api_view(['POST'])   
 def impotDGI(request): 
     fichier = request.data['fichier']
-    tauxCroissance = request.data['taux_croissance']
-    serializer = ImpotDGISerializer(data={'fichier':fichier,'taux_croissance':tauxCroissance})
+    serializer = ImpotDGISerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)

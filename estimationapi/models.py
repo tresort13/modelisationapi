@@ -103,7 +103,6 @@ class DonneeProduction(models.Model):
     
 class ImpotDGI(models.Model):
     fichier = models.FileField(upload_to='files')
-    taux_croissance= models.CharField(max_length=3)
     date_heure_envoie =models.DateTimeField(auto_now_add=True)
     date_envoie = models.DateField(auto_now_add=True)
     

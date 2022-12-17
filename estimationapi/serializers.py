@@ -121,7 +121,7 @@ class DonneeProductionSerializer(serializers.ModelSerializer):
 class ImpotDGISerializer(serializers.ModelSerializer):
     class Meta:
         model = ImpotDGI
-        fields =  ['id', 'fichier','taux_croissance']
+        fields =  ['id', 'fichier']
         
 class ImpoExpoDGDASerializer(serializers.ModelSerializer):
     class Meta:
