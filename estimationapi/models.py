@@ -111,3 +111,9 @@ class ImpoExpoDGDA(models.Model):
     date_heure_envoie =models.DateTimeField(auto_now_add=True)
     date_envoie = models.DateField(auto_now_add=True)
     
+class RecettesDGDA(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
+    
+    

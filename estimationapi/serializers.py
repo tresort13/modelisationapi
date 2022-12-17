@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import CalculeDemandeInterieure, CalculeProductionDomestique, DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, DonneeProduction, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite,ImpotDGI,ImpoExpoDGDA
+from .models import CalculeDemandeInterieure, CalculeProductionDomestique, DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, DonneeProduction, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite,ImpotDGI,ImpoExpoDGDA,RecettesDGDA
 from django.contrib.auth.models import User
 
 
@@ -126,6 +126,11 @@ class ImpotDGISerializer(serializers.ModelSerializer):
 class ImpoExpoDGDASerializer(serializers.ModelSerializer):
     class Meta:
         model = ImpoExpoDGDA
+        fields =  ['id', 'fichier']
+        
+class RecettesDGDASerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecettesDGDA
         fields =  ['id', 'fichier']
         
         
