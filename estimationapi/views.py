@@ -19,7 +19,7 @@ from estimationapi.models import PopulationProvince
 from estimationapi.models import TauxNataliteMortalite
 from estimationapi.serializers import TauxNataliteMortaliteSerializer
 from estimationapi.serializers import PopulationProvinceSerializer
-from estimationapi.serializers import ImpotDGISerializer,ImpoExpoDGDASerializer,RecettesDGDASerializer
+from estimationapi.serializers import ImpotDGISerializer,ImpoExpoDGDASerializer,RecettesDGDASerializer,RecettesDGRADSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from knox.views import LoginView as KnoxLoginView
@@ -402,6 +402,20 @@ def recettesDGDA(request):
     donnes = []
     for i in range(2,row + 1):
             donnes.append({"recettes_dgda":sheet.cell(i,1).value,"annee_fiscale_2018":sheet.cell(i,2).value,"annee_fiscale_2019":sheet.cell(i,3).value,"annee_fiscale_2020":sheet.cell(i,4).value,"annee_fiscale_2021":sheet.cell(i,5).value});          
+    return Response(donnes)
+
+@api_view(['POST'])   
+def recettesDGRAD(request): 
+    fichier = request.data['fichier']
+    serializer = RecettesDGRADSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(2,row + 1):
+            donnes.append({"recettes_dgrad":sheet.cell(i,1).value,"annee_fiscale_2018":sheet.cell(i,2).value,"annee_fiscale_2019":sheet.cell(i,3).value,"annee_fiscale_2020":sheet.cell(i,4).value,"annee_fiscale_2021":sheet.cell(i,5).value,"annee_fiscale_2022":sheet.cell(i,6).value});          
     return Response(donnes)
 
 

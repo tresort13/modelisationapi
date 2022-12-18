@@ -34,7 +34,8 @@ urlpatterns = [
     path('api/donneeProduction/',views.donneeProduction,name='donneeProduction'),
     path('api/impotDGI/',views.impotDGI,name='impotDGI'),
     path('api/infoImpoExpo/',views.impoExpoDGDA,name='impoExpoDGDA'),
-    path('api/recettesDGDA/',views.recettesDGDA,name='impoExpoDGDA')
+    path('api/recettesDGDA/',views.recettesDGDA,name='impoExpoDGDA'),
+    path('api/recettesDGRAD/',views.recettesDGRAD,name='impoExpoDGRAD')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
