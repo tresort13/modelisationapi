@@ -415,7 +415,7 @@ def recettesDGRAD(request):
     row = sheet.max_row
     donnes = []
     for i in range(2,row + 1):
-            donnes.append({"recettes_dgrad":sheet.cell(i,1).value,"annee_fiscale_2018":sheet.cell(i,2).value,"annee_fiscale_2019":sheet.cell(i,3).value,"annee_fiscale_2020":sheet.cell(i,4).value,"annee_fiscale_2021":sheet.cell(i,5).value,"annee_fiscale_2022":sheet.cell(i,6).value});          
+            donnes.append({"recettes_dgrad":sheet.cell(i,1).value,"annee_fiscale_2019":sheet.cell(i,2).value,"annee_fiscale_2020":sheet.cell(i,3).value,"annee_fiscale_2021":sheet.cell(i,4).value,"annee_fiscale_2022":sheet.cell(i,5).value});          
     return Response(donnes)
 
 
