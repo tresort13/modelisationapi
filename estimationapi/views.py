@@ -443,7 +443,8 @@ def exedantBruteExploitation(request):
     row = sheet.max_row
     donnes = []
     for i in range(3,row + 1):
-            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_exedant_brut":sheet.cell(i,2).value,"ebe_urbain_agricultures":sheet.cell(i,3).value,"ebe_urbain_insdustries_extractives":sheet.cell(i,4).value,"ebe_urbain_industries_manufactures":sheet.cell(i,5).value,"ebe_urbain_services":sheet.cell(i,6).value,"ebe_rural_agricultures":sheet.cell(i,7).value,"ebe_rural_insdustries_extractives":sheet.cell(i,8).value,"ebe_rural_industries_manufactures":sheet.cell(i,9).value,"ebe_rural_services":sheet.cell(i,10).value});          
+        donnes.append({"nom_province":sheet.cell(i,1).value,"nature_revenus_salaires":sheet.cell(i,2).value,"salaires_urbain_agricultures":sheet.cell(i,3).value,"salaire_urbain_insdustries_extractives":sheet.cell(i,4).value,"salaires_urbain_industries_manufactures":sheet.cell(i,5).value,"salaires_urbain_services":sheet.cell(i,6).value,"salaires_rural_agricultures":sheet.cell(i,7).value,"salaire_rural_insdustries_extractives":sheet.cell(i,8).value,"salaires_rural_industries_manufactures":sheet.cell(i,9).value,"salaires_rural_services":sheet.cell(i,10).value});          
+           # donnes.append({"nom_province":sheet.cell(i,1).value,"nature_exedant_brut":sheet.cell(i,2).value,"ebe_urbain_agricultures":sheet.cell(i,3).value,"ebe_urbain_insdustries_extractives":sheet.cell(i,4).value,"ebe_urbain_industries_manufactures":sheet.cell(i,5).value,"ebe_urbain_services":sheet.cell(i,6).value,"ebe_rural_agricultures":sheet.cell(i,7).value,"ebe_rural_insdustries_extractives":sheet.cell(i,8).value,"ebe_rural_industries_manufactures":sheet.cell(i,9).value,"ebe_rural_services":sheet.cell(i,10).value});          
     return Response(donnes)
 
 @api_view(['POST'])   
