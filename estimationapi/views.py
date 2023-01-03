@@ -4,7 +4,7 @@ from django.shortcuts import render
 import openpyxl
 from estimationapi.serializers import PopulationActiveOffreEmploiSecteurSerializer
 from estimationapi.models import DonneeConsommation, DonneeInvestissementPrive,ImpotDGI
-from estimationapi.models import DonneeExportation, DonneeImportation
+from estimationapi.models import DonneeExportation, DonneeImportation,RevenusSalaires,ExedantBrutExploitation,AutresImpots,SubventionProduction,SubventionConsommation
 from estimationapi.serializers import DonneeImportationSerializer
 from estimationapi.serializers import DonneeExportationSerializer
 from estimationapi.models import DonneeDepenseCapitale, DonneeDepenseCourante
@@ -18,7 +18,7 @@ from estimationapi.serializers import TauxCroissanceProvinceSerializer
 from estimationapi.models import PopulationProvince
 from estimationapi.models import TauxNataliteMortalite
 from estimationapi.serializers import TauxNataliteMortaliteSerializer
-from estimationapi.serializers import PopulationProvinceSerializer
+from estimationapi.serializers import PopulationProvinceSerializer,RevenusSalairesSerializer,ExedantBrutExploitationSerializer,AutresImpotsSerializer,SubventionProductionSerializer,SubventionConsommationSerializer
 from estimationapi.serializers import ImpotDGISerializer,ImpoExpoDGDASerializer,RecettesDGDASerializer,RecettesDGRADSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -417,5 +417,79 @@ def recettesDGRAD(request):
     for i in range(2,row + 1):
             donnes.append({"recettes_dgrad":sheet.cell(i,1).value,"annee_fiscale_2019":sheet.cell(i,2).value,"annee_fiscale_2020":sheet.cell(i,3).value,"annee_fiscale_2021":sheet.cell(i,4).value,"annee_fiscale_2022":sheet.cell(i,5).value});          
     return Response(donnes)
+
+@api_view(['POST'])   
+def revenusSalaires(request): 
+    fichier = request.data['fichier']
+    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(3,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_revenus_salaires":sheet.cell(i,2).value,"salaires_urbain_agricultures":sheet.cell(i,3).value,"salaire_urbain_insdustries_extractives":sheet.cell(i,4).value,"salaires_urbain_industries_manufactures":sheet.cell(i,5).value,"salaires_urbain_services":sheet.cell(i,6).value,"salaires_rural_agricultures":sheet.cell(i,7).value,"salaire_rural_insdustries_extractives":sheet.cell(i,8).value,"salaires_rural_industries_manufactures":sheet.cell(i,9).value,"salaires_rural_services":sheet.cell(i,10).value});          
+    return Response(donnes)
+
+@api_view(['POST'])   
+def exedantBruteExploitation(request): 
+    fichier = request.data['fichier']
+    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(3,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_exedant_brut":sheet.cell(i,2).value,"ebe_urbain_agricultures":sheet.cell(i,3).value,"ebe_urbain_insdustries_extractives":sheet.cell(i,4).value,"ebe_urbain_industries_manufactures":sheet.cell(i,5).value,"ebe_urbain_services":sheet.cell(i,6).value,"ebe_rural_agricultures":sheet.cell(i,7).value,"ebe_rural_insdustries_extractives":sheet.cell(i,8).value,"ebe_rural_industries_manufactures":sheet.cell(i,9).value,"ebe_rural_services":sheet.cell(i,10).value});          
+    return Response(donnes)
+
+@api_view(['POST'])   
+def autresImpots(request): 
+    fichier = request.data['fichier']
+    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(2,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_rural":sheet.cell(i,4).value});          
+    return Response(donnes)
+
+@api_view(['POST'])   
+def subventionProduction(request): 
+    fichier = request.data['fichier']
+    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(3,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_subvention_production":sheet.cell(i,2).value,"ebe_urbain_agricultures":sheet.cell(i,3).value,"ebe_urbain_insdustries_extractives":sheet.cell(i,4).value,"ebe_urbain_industries_manufactures":sheet.cell(i,5).value,"ebe_urbain_services":sheet.cell(i,6).value,"ebe_rural_agricultures":sheet.cell(i,7).value,"ebe_rural_insdustries_extractives":sheet.cell(i,8).value,"ebe_rural_industries_manufactures":sheet.cell(i,9).value,"ebe_rural_services":sheet.cell(i,10).value});          
+    return Response(donnes)
+
+@api_view(['POST'])   
+def subventionConsommation(request): 
+    fichier = request.data['fichier']
+    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    if serializer.is_valid() :
+        serializer.save()
+    wb= openpyxl.load_workbook(fichier)
+    sheet = wb['Feuil1']
+    row = sheet.max_row
+    donnes = []
+    for i in range(2,row + 1):
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_subvention_consommation":sheet.cell(i,2).value,"subvention_consommation_urbain":sheet.cell(i,3).value,"subvention_consommation_rural":sheet.cell(i,4).value});          
+    return Response(donnes)
+
+
+
+
 
 

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import CalculeDemandeInterieure, CalculeProductionDomestique, DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, DonneeProduction, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite,ImpotDGI,ImpoExpoDGDA,RecettesDGDA,RecettesDGRAD
+from .models import CalculeDemandeInterieure, CalculeProductionDomestique,DonneeConsommation, DonneeDepenseCapitale, DonneeDepenseCourante, DonneeDepensePublique, DonneeExportation, DonneeImportation, DonneeInvestissementPrive, DonneeProduction, ExportationNettesPays, PopulationActiveOffreEmploi, PopulationActiveOffreEmploiSecteur, PopulationProvince, PopulationTotalProvinceApresMigration, ReellePopulationProvince, TauxCroissanceProvince, TauxMigrationProvince, TauxNataliteMortalite,ImpotDGI,ImpoExpoDGDA,RecettesDGDA,RecettesDGRAD,RevenusSalaires,SubventionConsommation,SubventionProduction,AutresImpots,ExedantBrutExploitation
 from django.contrib.auth.models import User
 
 
@@ -137,6 +137,35 @@ class RecettesDGRADSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecettesDGRAD
         fields =  ['id', 'fichier']
+
+class RevenusSalairesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RevenusSalaires
+        fields =  ['id', 'fichier']
+        
+class ExedantBrutExploitationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ExedantBrutExploitation
+        fields =  ['id', 'fichier']
+        
+class AutresImpotsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AutresImpots
+        fields =  ['id', 'fichier']
+        
+class SubventionProductionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubventionProduction
+        fields =  ['id', 'fichier']
+        
+class SubventionConsommationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubventionConsommation
+        fields =  ['id', 'fichier']
+        
+        
+        
+        
         
         
         

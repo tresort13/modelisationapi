@@ -120,5 +120,30 @@ class RecettesDGRAD(models.Model):
     fichier = models.FileField(upload_to='files')
     date_heure_envoie =models.DateTimeField(auto_now_add=True)
     date_envoie = models.DateField(auto_now_add=True)
+
+class RevenusSalaires(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
+    
+class ExedantBrutExploitation(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
+
+class AutresImpots(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
+    
+class SubventionProduction(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
+
+class SubventionConsommation(models.Model):
+    fichier = models.FileField(upload_to='files')
+    date_heure_envoie =models.DateTimeField(auto_now_add=True)
+    date_envoie = models.DateField(auto_now_add=True)
     
     
