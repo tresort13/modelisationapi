@@ -435,7 +435,7 @@ def revenusSalaires(request):
 @api_view(['POST'])   
 def exedantBruteExploitation(request): 
     fichier = request.data['fichier']
-    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    serializer = ExedantBrutExploitationSerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)
@@ -450,7 +450,7 @@ def exedantBruteExploitation(request):
 @api_view(['POST'])   
 def autresImpots(request): 
     fichier = request.data['fichier']
-    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    serializer = AutresImpotsSerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)
@@ -464,7 +464,7 @@ def autresImpots(request):
 @api_view(['POST'])   
 def subventionProduction(request): 
     fichier = request.data['fichier']
-    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    serializer = SubventionProductionSerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)
@@ -479,15 +479,16 @@ def subventionProduction(request):
 @api_view(['POST'])   
 def subventionConsommation(request): 
     fichier = request.data['fichier']
-    serializer = RevenusSalairesSerializer(data={'fichier':fichier})
+    serializer = SubventionConsommationSerializer(data={'fichier':fichier})
     if serializer.is_valid() :
         serializer.save()
     wb= openpyxl.load_workbook(fichier)
     sheet = wb['Feuil1']
     row = sheet.max_row
     donnes = []
-    for i in range(2,row + 1):
-            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_subvention_consommation":sheet.cell(i,2).value,"subvention_consommation_urbain":sheet.cell(i,3).value,"subvention_consommation_rural":sheet.cell(i,4).value});          
+    for i in range(3,row + 1):
+           # donnes.append({"nom_province":sheet.cell(i,1).value,"nature_subvention_consommation":sheet.cell(i,2).value,"subvention_consommation_urbain":sheet.cell(i,3).value,"total_subvention_consommation_urbain":sheet.cell(i,4).value,"subvention_consommation_rural":sheet.cell(i,5).value,"total_subvention_consommation_rural":sheet.cell(i,6).value});
+           donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_urbain_total":sheet.cell(i,4).value,"autre_impot_rural":sheet.cell(i,5).value,"autre_impot_rural_total":sheet.cell(i,6).value});                    
     return Response(donnes)
 
 
