@@ -458,7 +458,7 @@ def autresImpots(request):
     row = sheet.max_row
     donnes = []
     for i in range(3,row + 1):
-            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_urbain_total":sheet.cell(i,4).value,"autre_impot_rural":sheet.cell(i,5).value,"autre_impot_rural_total":sheet.cell(i,6).value});          
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_rural":sheet.cell(i,5).value});          
     return Response(donnes)
 
 @api_view(['POST'])   
@@ -488,7 +488,7 @@ def subventionConsommation(request):
     donnes = []
     for i in range(2,row + 1):
            # donnes.append({"nom_province":sheet.cell(i,1).value,"nature_subvention_consommation":sheet.cell(i,2).value,"subvention_consommation_urbain":sheet.cell(i,3).value,"total_subvention_consommation_urbain":sheet.cell(i,4).value,"subvention_consommation_rural":sheet.cell(i,5).value,"total_subvention_consommation_rural":sheet.cell(i,6).value});
-           donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_urbain_total":sheet.cell(i,4).value,"autre_impot_rural":sheet.cell(i,5).value,"autre_impot_rural_total":sheet.cell(i,6).value});                    
+            donnes.append({"nom_province":sheet.cell(i,1).value,"nature_autre_impot":sheet.cell(i,2).value,"autre_impot_urbain":sheet.cell(i,3).value,"autre_impot_rural":sheet.cell(i,5).value});          
     return Response(donnes)
 
 
