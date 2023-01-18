@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7#=vkz)xg0)meg(of-n+h5n2lc6jbx5yqff!v_jonx%+g7(6^u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://modelisationfiscaleapi.herokuapp.com']
 
